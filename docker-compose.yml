@@ -1,0 +1,10 @@
+services:
+  post-reader:
+    build: .
+    container_name: post-reader
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./posts:/app/posts
