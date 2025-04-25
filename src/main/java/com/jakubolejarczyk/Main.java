@@ -1,7 +1,10 @@
 package com.jakubolejarczyk;
 
+import com.jakubolejarczyk.application.Application;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        Application application = new Application();
+        application.start();
     }
 }
