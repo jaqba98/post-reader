@@ -42,6 +42,7 @@ public class Application {
             try {
                 menuUI.draw();
                 String option = readOptionService.readOption();
+                System.out.println();
                 switch (option) {
                     case "posts" -> {
                         String posts = readPostsService.readApi("posts");
@@ -56,6 +57,7 @@ public class Application {
                     }
                     default -> wrongOptionUI.draw();
                 }
+                System.out.println();
             } catch (Exception e) {
                 throw new Error(e.getMessage());
             }
