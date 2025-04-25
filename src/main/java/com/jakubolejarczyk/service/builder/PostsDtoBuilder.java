@@ -7,7 +7,7 @@ import com.jakubolejarczyk.model.dto.PostDtoModel;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class PostDtoBuilder {
+public class PostsDtoBuilder {
     public List<PostDtoModel> build(String posts) {
         Gson gson = new Gson();
         Type postListType = new TypeToken<List<PostDtoModel>>() {}.getType();
