@@ -16,7 +16,8 @@ public class SavePostsService {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         postsDomain.forEach(postDomain -> {
             String json = gson.toJson(postDomain);
-            try (FileWriter writer = new FileWriter("posts/" + postDomain.getId() + ".json")) {
+            String fileName = "posts/" + postDomain.getId() + ".json";
+            try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(json);
             } catch (IOException e) {
                 throw new Error(e.getMessage());

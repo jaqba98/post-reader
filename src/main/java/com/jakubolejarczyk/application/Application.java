@@ -43,16 +43,16 @@ public class Application {
                 menuUI.draw();
                 String option = readOptionService.readOption();
                 switch (option) {
-                    case "exit" -> {
-                        exitUI.draw();
-                        return;
-                    }
                     case "posts" -> {
                         String posts = readPostsService.readApi("posts");
                         List<PostDtoModel> postsDto = postsDtoBuilder.build(posts);
                         List<PostDomainModel> postsDomain = postsDomainBuilder.build(postsDto);
                         savePostsService.savePosts(postsDomain);
                         successUI.draw("Posts");
+                    }
+                    case "exit" -> {
+                        exitUI.draw();
+                        return;
                     }
                     default -> wrongOptionUI.draw();
                 }
