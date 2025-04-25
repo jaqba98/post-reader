@@ -1,4 +1,4 @@
-package com.jakubolejarczyk.service.builder;
+package com.jakubolejarczyk.service;
 
 import com.jakubolejarczyk.model.domain.PostDomainModel;
 import com.jakubolejarczyk.model.dto.PostDtoModel;

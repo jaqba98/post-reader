@@ -1,54 +1,58 @@
 package com.jakubolejarczyk.application;
 
+import com.jakubolejarczyk.infrastructure.ReadApiService;
 import com.jakubolejarczyk.infrastructure.ReadOptionService;
-import com.jakubolejarczyk.infrastructure.ReadPostsService;
 import com.jakubolejarczyk.infrastructure.SavePostsService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
 import com.jakubolejarczyk.model.dto.PostDtoModel;
-import com.jakubolejarczyk.service.builder.PostsDomainBuilder;
-import com.jakubolejarczyk.service.builder.PostsDtoBuilder;
+import com.jakubolejarczyk.service.PostsDomainBuilder;
+import com.jakubolejarczyk.service.PostsDtoBuilder;
 import com.jakubolejarczyk.ui.ExitUI;
 import com.jakubolejarczyk.ui.MenuUI;
+import com.jakubolejarczyk.ui.SuccessUI;
 import com.jakubolejarczyk.ui.WrongOptionUI;
 
 import java.util.List;
 
 public class Application {
     private final MenuUI menuUI;
-    private final WrongOptionUI wrongOptionUI;
-    private final ExitUI exitUI;
     private final ReadOptionService readOptionService;
-    private final ReadPostsService readPostsService;
+    private final ExitUI exitUI;
+    private final WrongOptionUI wrongOptionUI;
+    private final ReadApiService readPostsService;
     private final PostsDtoBuilder postsDtoBuilder;
     private final PostsDomainBuilder postsDomainBuilder;
     private final SavePostsService savePostsService;
+    private final SuccessUI successUI;
 
     public Application() {
         menuUI = new MenuUI();
-        wrongOptionUI = new WrongOptionUI();
-        exitUI = new ExitUI();
         readOptionService = new ReadOptionService();
-        readPostsService = new ReadPostsService();
+        exitUI = new ExitUI();
+        wrongOptionUI = new WrongOptionUI();
+        readPostsService = new ReadApiService();
         postsDtoBuilder = new PostsDtoBuilder();
-        this.postsDomainBuilder = new PostsDomainBuilder();
-        this.savePostsService = new SavePostsService();
+        postsDomainBuilder = new PostsDomainBuilder();
+        savePostsService = new SavePostsService();
+        successUI = new SuccessUI();
     }
 
     public void run() {
         while (true) {
             try {
                 menuUI.draw();
-                int option = readOptionService.read();
+                String option = readOptionService.readOption();
                 switch (option) {
-                    case 0 -> {
+                    case "exit" -> {
                         exitUI.draw();
                         return;
                     }
-                    case 1 -> {
-                        String posts = readPostsService.readPosts();
+                    case "posts" -> {
+                        String posts = readPostsService.readApi("posts");
                         List<PostDtoModel> postsDto = postsDtoBuilder.build(posts);
                         List<PostDomainModel> postsDomain = postsDomainBuilder.build(postsDto);
                         savePostsService.savePosts(postsDomain);
+                        successUI.draw("Posts");
                     }
                     default -> wrongOptionUI.draw();
                 }

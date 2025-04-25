@@ -9,17 +9,17 @@ public class ReadOptionService {
         scanner = new Scanner(System.in);
     }
 
-    public int read() {
+    public String readOption() {
         try {
             String input = scanner.nextLine();
             int option = Integer.parseInt(input);
             return switch (option) {
-                case 0 -> 0;
-                case 1 -> 1;
-                default -> -1;
+                case 0 -> "exit";
+                case 1 -> "posts";
+                default -> "error";
             };
         } catch (Exception e) {
-            return -1;
+            return "error";
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.jakubolejarczyk.service.builder;
+package com.jakubolejarczyk.service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
