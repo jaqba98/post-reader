@@ -6,23 +6,24 @@ import com.jakubolejarczyk.utils.FileUtils;
 import com.jakubolejarczyk.utils.FolderUtils;
 import com.jakubolejarczyk.utils.GsonUtils;
 import com.jakubolejarczyk.utils.LogUtils;
-import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
-@AllArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class SaveToFileService<TDomain extends BaseModel> {
-    private final FolderUtils folderUtils;
-    private final FileUtils<TDomain> fileUtils;
-    private final GsonUtils<TDomain> gsonUtils;
-    private final LogUtils logUtils;
-    private final SaveToFileResultUI saveToFileResultUI;
+    @NonNull private final FolderUtils folderUtils;
+    @NonNull private final FileUtils<TDomain> fileUtils;
+    @NonNull private final GsonUtils<TDomain> gsonUtils;
+    @NonNull private final LogUtils logUtils;
+    @NonNull private final SaveToFileResultUI saveToFileResultUI;
 
-    public void save(List<TDomain> domains, String folderPath) {
+    public void save(@NonNull List<TDomain> domains, @NonNull String folderPath) {
         folderUtils.createFolder(folderPath);
         val gson = gsonUtils.create();
         logUtils.emptyLine();

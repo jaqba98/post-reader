@@ -2,13 +2,14 @@ package com.jakubolejarczyk.ui;
 
 import com.jakubolejarczyk.model.ui.UIModel;
 import com.jakubolejarczyk.utils.LogUtils;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class SaveToFileResultUI implements UIModel {
-    private final LogUtils logUtils;
+    @NonNull private final LogUtils logUtils;
     private Integer successLength;
     private Integer fullLength;
 
@@ -20,7 +21,7 @@ public class SaveToFileResultUI implements UIModel {
         logUtils.error("Error: Only " + successLength + " out of " + fullLength + " files were saved correctly.");
     }
 
-    public void setData(Integer successLength, Integer fullLength) {
+    public void setData(@NonNull Integer successLength, @NonNull Integer fullLength) {
         this.successLength = successLength;
         this.fullLength = fullLength;
     }

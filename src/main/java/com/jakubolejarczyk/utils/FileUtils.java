@@ -3,20 +3,21 @@ package com.jakubolejarczyk.utils;
 import com.google.gson.Gson;
 import com.jakubolejarczyk.ui.SaveFileErrorUI;
 import com.jakubolejarczyk.ui.SaveFileUI;
-import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class FileUtils<TDomain> {
-    private final GsonUtils<TDomain> gsonUtils;
-    private final SaveFileUI saveFileUI;
-    private final SaveFileErrorUI saveFileErrorUI;
+    @NonNull private final GsonUtils<TDomain> gsonUtils;
+    @NonNull private final SaveFileUI saveFileUI;
+    @NonNull private final SaveFileErrorUI saveFileErrorUI;
 
-    public boolean writeJson(Gson gson, String folderPath, Integer id, TDomain domain) {
+    public boolean writeJson(@NonNull Gson gson, @NonNull String folderPath, @NonNull Integer id, @NonNull TDomain domain) {
         val json = gsonUtils.toJson(gson, domain);
         val filePath = createJsonFileName(folderPath, id);
         try(FileWriter writer = new FileWriter(filePath)) {
@@ -31,7 +32,7 @@ public class FileUtils<TDomain> {
         }
     }
 
-    private String createJsonFileName(String folderPath, Integer id) {
+    private String createJsonFileName(@NonNull String folderPath, @NonNull Integer id) {
         return folderPath + "/" + id + ".json";
     }
 }

@@ -6,18 +6,19 @@ import com.jakubolejarczyk.logic.PostsLogic;
 import com.jakubolejarczyk.ui.ExitUI;
 import com.jakubolejarczyk.ui.MenuUI;
 import com.jakubolejarczyk.ui.WrongOptionUI;
-import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Application {
-    private final MenuUI menuUI;
-    private final FetchOptionService fetchOptionService;
-    private final ExitUI exitUI;
-    private final WrongOptionUI wrongOptionUI;
-    private final PostsLogic postsLogic;
+    @NonNull private final MenuUI menuUI;
+    @NonNull private final FetchOptionService fetchOptionService;
+    @NonNull private final ExitUI exitUI;
+    @NonNull private final WrongOptionUI wrongOptionUI;
+    @NonNull private final PostsLogic postsLogic;
 
     public void start() {
         while(true) {

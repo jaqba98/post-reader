@@ -1,5 +1,6 @@
 package com.jakubolejarczyk.utils;
 
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,11 +15,11 @@ public class LogUtils {
         System.out.println();
     }
 
-    public void error(String message) {
+    public void error(@NonNull String message) {
         error(message, true);
     }
 
-    public void error(String message, boolean println) {
+    public void error(@NonNull String message, @NonNull boolean println) {
         if (println) {
             System.out.println(ANSI_RED + message + ANSI_RESET);
         } else {
@@ -26,11 +27,11 @@ public class LogUtils {
         }
     }
 
-    public void success(String message) {
+    public void success(@NonNull String message) {
         success(message, true);
     }
 
-    public void success(String message, boolean println) {
+    public void success(@NonNull String message, @NonNull boolean println) {
         if (println) {
             System.out.println(ANSI_GREEN + message + ANSI_RESET);
         } else {
@@ -38,11 +39,11 @@ public class LogUtils {
         }
     }
 
-    public void info(String message) {
+    public void info(@NonNull String message) {
         info(message, true);
     }
 
-    public void info(String message, boolean println) {
+    public void info(@NonNull String message, @NonNull boolean println) {
         if (println) {
             System.out.println(ANSI_LIGHT_BLUE + message + ANSI_RESET);
         } else {
@@ -50,11 +51,11 @@ public class LogUtils {
         }
     }
 
-    public void task(String message) {
+    public void task(@NonNull String message) {
         task(message, true);
     }
 
-    public void task(String message, boolean println) {
+    public void task(@NonNull String message, @NonNull boolean println) {
         if (println) {
             System.out.println(ANSI_YELLOW + message + ANSI_RESET);
         } else {

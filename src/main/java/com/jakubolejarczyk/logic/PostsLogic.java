@@ -6,17 +6,18 @@ import com.jakubolejarczyk.enums.OutputEnum;
 import com.jakubolejarczyk.infrastructure.FetchApiService;
 import com.jakubolejarczyk.infrastructure.SaveToFileService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
-import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class PostsLogic {
-    private final FetchApiService fetchApiService;
-    private final PostsDtoBuilder postsDtoBuilder;
-    private final PostsDomainBuilder postsDomainBuilder;
-    private final SaveToFileService<PostDomainModel> saveToFileService;
+    @NonNull private final FetchApiService fetchApiService;
+    @NonNull private final PostsDtoBuilder postsDtoBuilder;
+    @NonNull private final PostsDomainBuilder postsDomainBuilder;
+    @NonNull private final SaveToFileService<PostDomainModel> saveToFileService;
 
     public void run() {
         val api = fetchApiService.fetch("posts");
