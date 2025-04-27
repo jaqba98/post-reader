@@ -8,10 +8,7 @@ import com.jakubolejarczyk.infrastructure.FetchOptionService;
 import com.jakubolejarczyk.infrastructure.SaveToFileService;
 import com.jakubolejarczyk.logic.PostsLogic;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
-import com.jakubolejarczyk.ui.ExitUI;
-import com.jakubolejarczyk.ui.MenuUI;
-import com.jakubolejarczyk.ui.SaveFileUI;
-import com.jakubolejarczyk.ui.WrongOptionUI;
+import com.jakubolejarczyk.ui.*;
 import com.jakubolejarczyk.utils.*;
 import lombok.val;
 
@@ -32,8 +29,10 @@ public class Main {
         val folderUtils = new FolderUtils();
         val gsonUtils = new GsonUtils<PostDomainModel>();
         val saveFileUI = new SaveFileUI(logUtils);
-        val fileUtils = new FileUtils<>(gsonUtils, saveFileUI);
-        val saveToFileService = new SaveToFileService<>(folderUtils, fileUtils, gsonUtils, logUtils);
+        val saveToFileResultUI = new SaveToFileResultUI(logUtils);
+        val saveFileErrorUI = new SaveFileErrorUI(logUtils);
+        val fileUtils = new FileUtils<>(gsonUtils, saveFileUI, saveFileErrorUI);
+        val saveToFileService = new SaveToFileService<>(folderUtils, fileUtils, gsonUtils, logUtils, saveToFileResultUI);
         val postsLogic = new PostsLogic(fetchApiService, domainDtoBuilder, postsDomainBuilder, saveToFileService);
         val application = new Application(menuUI, fetchOptionService, exitUI, wrongOptionUI, postsLogic);
         application.start();
