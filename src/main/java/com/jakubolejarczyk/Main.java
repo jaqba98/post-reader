@@ -1,6 +1,7 @@
 package com.jakubolejarczyk;
 
 import com.jakubolejarczyk.application.Application;
+import com.jakubolejarczyk.builder.PostsDtoBuilder;
 import com.jakubolejarczyk.infrastructure.FetchApiService;
 import com.jakubolejarczyk.infrastructure.FetchOptionService;
 import com.jakubolejarczyk.logic.PostsLogic;
@@ -23,7 +24,8 @@ public class Main {
         val fetchOptionService = new FetchOptionService(scanner);
         val exitUI = new ExitUI(logUtils);
         val wrongOptionUI = new WrongOptionUI(logUtils);
-        val postsLogic = new PostsLogic(fetchApiService);
+        val domainDtoBuilder = new PostsDtoBuilder();
+        val postsLogic = new PostsLogic(fetchApiService, domainDtoBuilder);
         val application = new Application(menuUI, fetchOptionService, exitUI, wrongOptionUI, postsLogic);
         application.start();
     }

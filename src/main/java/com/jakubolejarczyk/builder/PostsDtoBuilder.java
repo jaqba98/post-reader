@@ -1,4 +1,4 @@
-package com.jakubolejarczyk.service;
+package com.jakubolejarczyk.builder;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -8,9 +8,9 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class PostsDtoBuilder {
-    public List<PostDtoModel> build(String posts) {
+    public List<PostDtoModel> build(String input) {
         Gson gson = new Gson();
-        Type postListType = new TypeToken<List<PostDtoModel>>() {}.getType();
-        return gson.fromJson(posts, postListType);
+        Type listType = new TypeToken<List<PostDtoModel>>() {}.getType();
+        return gson.fromJson(input, listType);
     }
 }
