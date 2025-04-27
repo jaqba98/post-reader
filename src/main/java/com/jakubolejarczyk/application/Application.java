@@ -1,6 +1,6 @@
 package com.jakubolejarczyk.application;
 
-import com.jakubolejarczyk.infrastructure.ReadApiService;
+import com.jakubolejarczyk.infrastructure.FetchApiService;
 import com.jakubolejarczyk.infrastructure.ReadOptionService;
 import com.jakubolejarczyk.infrastructure.SavePostsService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
@@ -19,7 +19,7 @@ public class Application {
     private final ReadOptionService readOptionService;
     private final ExitUI exitUI;
     private final WrongOptionUI wrongOptionUI;
-    private final ReadApiService readPostsService;
+    private final FetchApiService readPostsService;
     private final PostsDtoBuilder postsDtoBuilder;
     private final PostsDomainBuilder postsDomainBuilder;
     private final SavePostsService savePostsService;
@@ -30,7 +30,7 @@ public class Application {
         readOptionService = new ReadOptionService();
         exitUI = new ExitUI();
         wrongOptionUI = new WrongOptionUI();
-        readPostsService = new ReadApiService();
+        readPostsService = new FetchApiService();
         postsDtoBuilder = new PostsDtoBuilder();
         postsDomainBuilder = new PostsDomainBuilder();
         savePostsService = new SavePostsService();
