@@ -3,8 +3,8 @@ package com.jakubolejarczyk.utils;
 public class LogUtils {
     public final String ANSI_RED = "\u001B[31m";
     public final String ANSI_GREEN = "\u001B[32m";
-    public final String ANSI_LIGHT_BLUE = "\u001B[94m"; // zmienione info na jaśniejszy niebieski
-    public final String ANSI_GRAY = "\u001B[90m";
+    public final String ANSI_LIGHT_BLUE = "\u001B[94m";
+    public final String ANSI_YELLOW = "\u001B[93m";
     public final String ANSI_RESET = "\u001B[0m";
 
     public void emptyLine() {
@@ -53,9 +53,9 @@ public class LogUtils {
 
     public void task(String message, boolean println) {
         if (println) {
-            System.out.println(ANSI_GRAY + message + ANSI_RESET);
+            System.out.println(ANSI_YELLOW + message + ANSI_RESET);
         } else {
-            System.out.print(ANSI_GRAY + message + ANSI_RESET);
+            System.out.print(ANSI_YELLOW + message + ANSI_RESET);
         }
     }
 }
