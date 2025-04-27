@@ -2,8 +2,10 @@ package com.jakubolejarczyk.application;
 
 import com.jakubolejarczyk.enums.OptionEnum;
 import com.jakubolejarczyk.infrastructure.FetchOptionService;
+import com.jakubolejarczyk.ui.ExitUI;
 import com.jakubolejarczyk.ui.HrUI;
 import com.jakubolejarczyk.ui.MenuUI;
+import com.jakubolejarczyk.ui.WrongOptionUI;
 import lombok.AllArgsConstructor;
 import lombok.val;
 
@@ -12,27 +14,30 @@ public class Application {
     private final MenuUI menuUI;
     private final FetchOptionService fetchOptionService;
     private final HrUI hrUI;
+    private final ExitUI exitUI;
+    private final WrongOptionUI wrongOptionUI;
 
     public void start() {
         while(true) {
             menuUI.draw();
             val option = fetchOptionService.fetch();
-            hrUI.draw();
             if (option == OptionEnum.EXIT) break;
+            if (option == OptionEnum.ERROR) {
+                wrongOptionUI.draw();
+            } else {
+                hrUI.draw();
+            }
         }
+        exitUI.draw();
     }
 }
 
-//    private final ExitUI exitUI;
-//    private final WrongOptionUI wrongOptionUI;
 //    private final FetchApiService readPostsService;
 //    private final PostsDtoBuilder postsDtoBuilder;
 //    private final PostsDomainBuilder postsDomainBuilder;
 //    private final SaveToFileService saveToFileService;
 //    private final SuccessUI successUI;
 //
-//        exitUI = new ExitUI();
-//        wrongOptionUI = new WrongOptionUI();
 //        readPostsService = new FetchApiService();
 //        postsDtoBuilder = new PostsDtoBuilder();
 //        postsDomainBuilder = new PostsDomainBuilder();
@@ -40,12 +45,6 @@ public class Application {
 //        successUI = new SuccessUI();
 //    }
 //
-//    public void run() {
-//        while (true) {
-//            try {
-//                menuUI.draw();
-//                String option = fetchOptionService.readOption();
-//                System.out.println();
 //                switch (option) {
 //                    case "posts" -> {
 //                        String posts = readPostsService.readApi("posts");
