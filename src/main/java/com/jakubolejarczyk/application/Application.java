@@ -8,7 +8,9 @@ import com.jakubolejarczyk.ui.MenuUI;
 import com.jakubolejarczyk.ui.WrongOptionUI;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
 public class Application {
     private final MenuUI menuUI;

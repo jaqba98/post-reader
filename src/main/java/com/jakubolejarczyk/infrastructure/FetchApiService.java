@@ -3,6 +3,7 @@ package com.jakubolejarczyk.infrastructure;
 import com.jakubolejarczyk.utils.UriUtils;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
@@ -10,6 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @AllArgsConstructor
+@Service
 public class FetchApiService {
     private final UriUtils uriUtils;
 

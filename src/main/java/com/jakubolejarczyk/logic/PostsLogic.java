@@ -8,8 +8,10 @@ import com.jakubolejarczyk.infrastructure.SaveToFileService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
+@Service
 public class PostsLogic {
     private final FetchApiService fetchApiService;
     private final PostsDtoBuilder postsDtoBuilder;

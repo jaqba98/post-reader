@@ -1,5 +1,8 @@
 package com.jakubolejarczyk.utils;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class LogUtils {
     public final String ANSI_RED = "\u001B[31m";
     public final String ANSI_GREEN = "\u001B[32m";

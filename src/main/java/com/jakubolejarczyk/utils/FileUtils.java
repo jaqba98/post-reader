@@ -5,9 +5,11 @@ import com.jakubolejarczyk.ui.SaveFileErrorUI;
 import com.jakubolejarczyk.ui.SaveFileUI;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
 
+@Service
 @AllArgsConstructor
 public class FileUtils<TDomain> {
     private final GsonUtils<TDomain> gsonUtils;

@@ -8,11 +8,13 @@ import com.jakubolejarczyk.utils.GsonUtils;
 import com.jakubolejarczyk.utils.LogUtils;
 import lombok.AllArgsConstructor;
 import lombok.val;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor
+@Service
 public class SaveToFileService<TDomain extends BaseModel> {
     private final FolderUtils folderUtils;
     private final FileUtils<TDomain> fileUtils;
