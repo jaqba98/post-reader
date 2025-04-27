@@ -2,6 +2,7 @@ package com.jakubolejarczyk.infrastructure;
 
 import com.jakubolejarczyk.utils.UriUtils;
 import lombok.AllArgsConstructor;
+import lombok.val;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
@@ -14,8 +15,8 @@ public class FetchApiService {
 
     public String fetch(String api) {
         try(HttpClient client = HttpClient.newHttpClient()) {
-            HttpRequest request = createRequest(api);
-            HttpResponse<String> response = createResponse(client, request);
+            val request = createRequest(api);
+            val response = createResponse(client, request);
             return getResponse(response);
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -2,7 +2,7 @@ package com.jakubolejarczyk.application;
 
 import com.jakubolejarczyk.infrastructure.FetchApiService;
 import com.jakubolejarczyk.infrastructure.ReadOptionService;
-import com.jakubolejarczyk.infrastructure.SavePostsService;
+import com.jakubolejarczyk.infrastructure.SaveToFileService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
 import com.jakubolejarczyk.model.dto.PostDtoModel;
 import com.jakubolejarczyk.service.PostsDomainBuilder;
@@ -22,7 +22,7 @@ public class Application {
     private final FetchApiService readPostsService;
     private final PostsDtoBuilder postsDtoBuilder;
     private final PostsDomainBuilder postsDomainBuilder;
-    private final SavePostsService savePostsService;
+    private final SaveToFileService saveToFileService;
     private final SuccessUI successUI;
 
     public Application() {
@@ -33,7 +33,7 @@ public class Application {
         readPostsService = new FetchApiService();
         postsDtoBuilder = new PostsDtoBuilder();
         postsDomainBuilder = new PostsDomainBuilder();
-        savePostsService = new SavePostsService();
+        saveToFileService = new SaveToFileService();
         successUI = new SuccessUI();
     }
 
@@ -48,7 +48,7 @@ public class Application {
                         String posts = readPostsService.readApi("posts");
                         List<PostDtoModel> postsDto = postsDtoBuilder.build(posts);
                         List<PostDomainModel> postsDomain = postsDomainBuilder.build(postsDto);
-                        savePostsService.savePosts(postsDomain);
+                        saveToFileService.savePosts(postsDomain);
                         successUI.draw("Posts");
                     }
                     case "exit" -> {
