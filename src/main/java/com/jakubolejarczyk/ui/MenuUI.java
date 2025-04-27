@@ -1,14 +1,19 @@
 package com.jakubolejarczyk.ui;
 
 import com.jakubolejarczyk.model.ui.UIModel;
+import com.jakubolejarczyk.utils.LogUtils;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class MenuUI implements UIModel {
+    private final LogUtils logUtils;
+
     public void draw() {
-        System.out.println("##################################################");
-        System.out.println("#      POST READER v0.1 by Jakub Olejarczyk      #");
-        System.out.println("##################################################");
-        System.out.println("1) Posts");
-        System.out.println("0) Exit program");
-        System.out.print("Select API to load: ");
+        logUtils.info("##################################################");
+        logUtils.info("#      POST READER v0.1 by Jakub Olejarczyk      #");
+        logUtils.info("##################################################");
+        logUtils.info("1) Posts");
+        logUtils.info("0) Exit program");
+        logUtils.info("Select API to load: ", false);
     }
 }
