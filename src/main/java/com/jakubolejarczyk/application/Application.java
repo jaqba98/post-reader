@@ -1,7 +1,7 @@
 package com.jakubolejarczyk.application;
 
 import com.jakubolejarczyk.infrastructure.FetchApiService;
-import com.jakubolejarczyk.infrastructure.ReadOptionService;
+import com.jakubolejarczyk.infrastructure.FetchOptionService;
 import com.jakubolejarczyk.infrastructure.SaveToFileService;
 import com.jakubolejarczyk.model.domain.PostDomainModel;
 import com.jakubolejarczyk.model.dto.PostDtoModel;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Application {
     private final MenuUI menuUI;
-    private final ReadOptionService readOptionService;
+    private final FetchOptionService fetchOptionService;
     private final ExitUI exitUI;
     private final WrongOptionUI wrongOptionUI;
     private final FetchApiService readPostsService;
@@ -27,7 +27,7 @@ public class Application {
 
     public Application() {
         menuUI = new MenuUI();
-        readOptionService = new ReadOptionService();
+        fetchOptionService = new FetchOptionService();
         exitUI = new ExitUI();
         wrongOptionUI = new WrongOptionUI();
         readPostsService = new FetchApiService();
@@ -41,7 +41,7 @@ public class Application {
         while (true) {
             try {
                 menuUI.draw();
-                String option = readOptionService.readOption();
+                String option = fetchOptionService.readOption();
                 System.out.println();
                 switch (option) {
                     case "posts" -> {
