@@ -6,6 +6,13 @@ public class Post {
     private String title;
     private String body;
 
+    public Post(Integer id, Integer userId, String title, String body) {
+        this.id = id;
+        this.userId = userId;
+        this.title = title;
+        this.body = body;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -36,5 +43,10 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return "{id='" + id + "', userId='" + userId + "', title='" + title + "', body='" + body + "'}";
     }
 }
