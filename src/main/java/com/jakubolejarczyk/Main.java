@@ -10,10 +10,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         FetchPostsService fetchPostsService = new FetchPostsService();
-        String input = fetchPostsService.fetch();
         PostsBuilder postsBuilder = new PostsBuilder();
-        List<Post> posts = postsBuilder.build(input);
         SavePostsService savePostsService = new SavePostsService();
+        String postsString = fetchPostsService.fetch();
+        List<Post> posts = postsBuilder.build(postsString);
         savePostsService.save(posts);
     }
 }
