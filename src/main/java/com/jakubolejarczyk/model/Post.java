@@ -1,14 +1,14 @@
 package com.jakubolejarczyk.model;
 
 public class Post {
-    private Integer id;
-    private Integer userId;
-    private String title;
-    private String body;
+    private final Integer userId;
+    private final Integer id;
+    private final String title;
+    private final String body;
 
-    public Post(Integer id, Integer userId, String title, String body) {
-        this.id = id;
+    public Post(Integer userId, Integer id, String title, String body) {
         this.userId = userId;
+        this.id = id;
         this.title = title;
         this.body = body;
     }
@@ -17,36 +17,13 @@ public class Post {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     @Override
     public String toString() {
-        return "{id='" + id + "', userId='" + userId + "', title='" + title + "', body='" + body + "'}";
+        return "{" + "\n" +
+            "\t" + "\"" + "userId\": " + userId + ",\n" +
+            "\t" + "\"" + "id\": " + id + ",\n" +
+            "\t" + "\"" + "title\": \"" + title.replaceAll("[\\n\\r]", "") + "\"" + ",\n" +
+            "\t" + "\"" + "body\": \"" + body.replaceAll("[\\n\\r]", "") + "\"" + "\n" +
+            "}";
     }
 }
