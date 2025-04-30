@@ -1,7 +1,6 @@
 package com.jakubolejarczyk.infrastructure;
 
 import com.jakubolejarczyk.model.base.BaseModel;
-import com.jakubolejarczyk.ui.SaveToFileResultUI;
 import com.jakubolejarczyk.utils.FileUtils;
 import com.jakubolejarczyk.utils.FolderUtils;
 import com.jakubolejarczyk.utils.GsonUtils;
@@ -21,7 +20,6 @@ public class SaveToFileService<TDomain extends BaseModel> {
     @NonNull private final FileUtils<TDomain> fileUtils;
     @NonNull private final GsonUtils<TDomain> gsonUtils;
     @NonNull private final LogUtils logUtils;
-    @NonNull private final SaveToFileResultUI saveToFileResultUI;
 
     public void save(@NonNull List<TDomain> domains, @NonNull String folderPath) {
         folderUtils.createFolder(folderPath);
@@ -31,8 +29,6 @@ public class SaveToFileService<TDomain extends BaseModel> {
             .map(domain -> fileUtils.writeJson(gson, folderPath, domain.getId(), domain))
             .toArray();
         val successLength = Arrays.stream(files).filter(file -> file.equals(true)).toArray().length;
-        saveToFileResultUI.setData(successLength, files.length);
-        saveToFileResultUI.draw();
         logUtils.emptyLine();
     }
 }
