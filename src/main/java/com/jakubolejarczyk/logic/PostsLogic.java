@@ -5,7 +5,7 @@ import com.jakubolejarczyk.builder.PostsDtoBuilder;
 import com.jakubolejarczyk.enums.OutputEnum;
 import com.jakubolejarczyk.infrastructure.FetchApiService;
 import com.jakubolejarczyk.infrastructure.SaveToFileService;
-import com.jakubolejarczyk.model.domain.PostDomainModel;
+import com.jakubolejarczyk.model.Post;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -17,7 +17,7 @@ public class PostsLogic {
     @NonNull private final FetchApiService fetchApiService;
     @NonNull private final PostsDtoBuilder postsDtoBuilder;
     @NonNull private final PostsDomainBuilder postsDomainBuilder;
-    @NonNull private final SaveToFileService<PostDomainModel> saveToFileService;
+    @NonNull private final SaveToFileService<Post> saveToFileService;
 
     public void run() {
         val api = fetchApiService.fetch("posts");

@@ -1,6 +1,6 @@
 package com.jakubolejarczyk.builder;
 
-import com.jakubolejarczyk.model.domain.PostDomainModel;
+import com.jakubolejarczyk.model.Post;
 import com.jakubolejarczyk.model.dto.PostDtoModel;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class PostsDomainBuilder {
-    public List<PostDomainModel> build(@NonNull List<PostDtoModel> postsDto) {
+    public List<Post> build(@NonNull List<PostDtoModel> postsDto) {
         return postsDto.stream()
-            .map(postDto -> PostDomainModel.builder()
+            .map(postDto -> Post.builder()
                 .userId(postDto.getUserId())
                 .id(postDto.getId())
                 .title(postDto.getTitle())
