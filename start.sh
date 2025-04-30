@@ -1,2 +1,2 @@
-sudo docker compose up -d
-sudo docker compose run --rm post-reader
+docker compose up -d
+docker compose run --rm post-reader
